@@ -4,7 +4,7 @@
 #       - [x] Checkboxes
 #             Give checkboxes IDs from the line number in the source document
 #       - [x] Checkboxes pre-filled with Xs
-#       - [ ] Figures
+#       - [x] Figures
 #       - [ ] Video embeds
 #       - [ ] External links
 
@@ -28,6 +28,14 @@ module Kramdown
       def convert_li(el, indent)
         if el.children.first.children.first.value =~ CHECKBOX_PATTERN
           convert_checkbox(el, indent)
+        else
+          super
+        end
+      end
+
+      def convert_p(el, indent)
+        if el.children.size == 1 && el.children.first.type == :img
+          convert_figure(el, indent)
         else
           super
         end
