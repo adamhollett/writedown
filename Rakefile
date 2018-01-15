@@ -13,13 +13,13 @@ end
 task t: :test
 
 desc 'Start a console session'
-task console: [:bundle] do
+task :console do
   sh 'ruby bin/console'
 end
 task c: :console
 
 desc 'Start a server to test Writedown in a browser'
-task server: [:bundle] do
+task :server do
   sh 'ruby test/app/app.rb'
 end
 task s: :server
