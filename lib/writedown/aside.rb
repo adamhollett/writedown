@@ -17,6 +17,13 @@ module Writedown
       # Determine the heading string used
       heading_text = text_content.match(ASIDE_PATTERN)[1]
 
+      # byebug
+
+      aside_classes = ['aside']
+      aside_classes << "aside--#{Writedown::Utils.slugify(heading_text)}"
+
+      el.attr[:class] = aside_classes.join(' ')
+
       # Remove the note pattern from the body contents
       text_content.sub!(ASIDE_PATTERN, '')
 
