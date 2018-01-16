@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'kramdown'
+require 'writedown/utils'
 require 'writedown/aside'
 require 'writedown/checkbox'
 require 'writedown/figure'
