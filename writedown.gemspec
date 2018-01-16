@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors       = ['Adam Hollett']
   s.email         = ['mail@adamhollett.com']
 
-  s.summary       = 'A prettier Markdown renderer for kramdown'
+  s.summary       = 'A nicer renderer for kramdown'
   s.homepage      = 'https://github.com/admhlt/writedown'
   s.license       = 'MIT'
 
