@@ -18,5 +18,6 @@ Gem::Specification.new do |s|
   end
   s.require_paths = ['lib']
 
-  s.add_dependency 'kramdown', '~> 1.16.0'
+  s.add_dependency 'kramdown',  '~> 1.16.0'
+  s.add_dependency 'fastimage', '~> 2.0.0'
 end

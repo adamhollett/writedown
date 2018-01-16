@@ -13,6 +13,7 @@ require 'byebug'
 module Kramdown
   module Converter
     class Writedown < Html
+      include ::Writedown::Image
       include ::Writedown::Aside
       include ::Writedown::Checkbox
       include ::Writedown::Figure
