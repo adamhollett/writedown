@@ -6,9 +6,6 @@
 #       - [x] Checkboxes pre-filled with Xs
 #       - [x] Figures
 #       - [ ] Video embeds
-#       - [ ] External links
-
-require 'byebug'
 
 module Kramdown
   module Converter
