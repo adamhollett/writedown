@@ -1,7 +1,16 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter 'test'
+end
+
 require 'kramdown'
 require 'writedown'
 require 'minitest/autorun'
 require 'byebug'
+
+def render(content)
+  Kramdown::Document.new(content).to_writedown
+end

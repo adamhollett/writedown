@@ -12,4 +12,5 @@ end
 
 group :test do
   gem 'minitest',           '~> 5.10'
+  gem 'simplecov',          '~> 0.15.0'
 end

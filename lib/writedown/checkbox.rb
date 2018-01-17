@@ -28,7 +28,7 @@ module Writedown
       el.children << input_element
       el.children << label_element
 
-      format_as_block_html(el.type, el.attr, inner(el, indent), indent)
+      format_as_indented_block_html(el.type, el.attr, inner(el, indent), indent)
     end
   end
 end
