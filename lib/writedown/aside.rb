@@ -17,10 +17,10 @@ module Writedown
       # Determine the heading string used
       heading_text = text_content.match(ASIDE_PATTERN)[1]
 
-      # byebug
-
-      aside_classes = ['aside']
-      aside_classes << "aside--#{Writedown::Utils.slugify(heading_text)}"
+      base_class    = 'aside'
+      aside_classes = [base_class]
+      heading_slug  = Writedown::Utils.slugify(heading_text)
+      aside_classes << "aside--#{heading_slug}" unless heading_slug == base_class
 
       el.attr[:class] = aside_classes.join(' ')
 
