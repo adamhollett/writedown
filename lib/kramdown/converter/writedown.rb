@@ -26,17 +26,11 @@ module Kramdown
         end
       end
 
-      def convert_li(el, indent)
-        if el.children.first.children.first.value =~ CHECKBOX_PATTERN
-          convert_checkbox(el, indent)
-        else
-          super
-        end
-      end
-
       def convert_p(el, indent)
         if el.children.size == 1 && el.children.first.type == :img
           convert_figure(el, indent)
+        elsif el.children.first.value =~ CHECKBOX_PATTERN
+          convert_checkbox(el, indent)
         else
           super
         end
