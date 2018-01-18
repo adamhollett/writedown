@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors       = ['Adam Hollett']
   s.email         = ['mail@adamhollett.com']
 
-  s.summary       = 'A nicer renderer for kramdown'
+  s.summary       = 'An enhanced renderer for kramdown, the pure Ruby Markdown converter.'
   s.homepage      = 'https://github.com/admhlt/writedown'
   s.license       = 'MIT'
 
@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   end
   s.require_paths = ['lib']
 
-  s.add_dependency 'kramdown',  '~> 1.16.0'
-  s.add_dependency 'fastimage', '~> 2.0.0'
+  s.add_dependency 'kramdown',  '~> 1.16', '>= 1.16.0'
+  s.add_dependency 'fastimage', '~> 2.0',  '>= 2.0.0'
 end
