@@ -1,8 +1,10 @@
 # Writedown
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/writedown`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Travis](https://img.shields.io/travis/adamhollett/writedown.svg)](https://travis-ci.org/adamhollett/writedown)
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/adamhollett/writedown.svg)](https://codeclimate.com/github/adamhollett/writedown)
+[![Code Climate](https://img.shields.io/codeclimate/c/adamhollett/writedown.svg)](https://codeclimate.com/github/adamhollett/writedown)
 
-TODO: Delete this and the text above, and describe your gem
+**Writedown** is an enhanced renderer for [kramdown](https://github.com/gettalong/kramdown), the pure Ruby markdown converter.
 
 ## Installation
 
@@ -12,27 +14,116 @@ Add this line to your application's Gemfile:
 gem 'writedown'
 ```
 
-And then execute:
+Then execute:
 
-    $ bundle
+``` shell
+bundle
+```
 
-Or install it yourself as:
+or install it yourself with:
 
-    $ gem install writedown
+``` shell
+gem install writedown
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+After installing the gem, replace instances of `Kramdown::Document#to_html` in your code with `Kramdown::Document#to_writedown`.
 
-## Development
+## Features
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Asides
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+You can render asides or "margin notes" using an extended blockquote syntax:
+
+Markdown
+
+``` markdown
+> Note:
+> Don't forget to turn off the power.
+```
+
+HTML
+
+``` html
+<aside class="aside aside--note">
+  <h4>Note</h4>
+  <p>Don't forget to turn off the power.</p>
+</aside>
+```
+
+### Checkboxes
+
+You can render checkboxes in paragraphs or list items by adding a box to the beginning of the item. Fill the box with an `x` to have it pre-checked when the page is rendered:
+
+Markdown
+
+``` markdown
+- [ ] Buy dog food
+- [ ] Pick up laundry
+- [x] Pay bills
+```
+
+HTML
+
+``` html
+<ul>
+  <li>
+    <p>
+      <input type="checkbox" id="checkbox-1" />
+      <label for "checkbox-1">Buy dog food</label>
+    </p>
+  </li>
+  <li>
+    <p>
+      <input type="checkbox" id="checkbox-2" />
+      <label for "checkbox-2">Pick up laundry</label>
+    </p>
+  </li><li>
+    <p>
+      <input type="checkbox" id="checkbox-3" checked="checked" />
+      <label for "checkbox-3">Pay bills</label>
+    </p>
+  </li>
+</ul>
+```
+
+### Figures
+
+You can convert an image into an HTML5 figure by placing it on its own line without any other text. Passing a title to the image renders the title as a figure caption:
+
+Markdown
+
+``` markdown
+![A still life with fruits and flowers](picture.jpg "Still life")
+```
+
+HTML
+
+``` html
+<figure>
+  <img src="picture.jpg" alt="A still life with fruits and flowers" title="Still life" />
+  <figcaption>Still life</figcaption>
+</figure>
+```
+
+### Image dimensions
+
+If you embed a local image, Writedown uses [fastimage](https://github.com/sdsykes/fastimage) to check the image's dimensions and pass them to the HTML:
+
+``` markdown
+![](picture.jpg)
+```
+
+HTML
+
+``` html
+<img src="picture.jpg" alt="" width="640" height="480" />
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/writedown.
+Bug reports and pull requests are welcome.
 
 ## License
 
