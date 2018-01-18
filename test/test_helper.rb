@@ -6,6 +6,7 @@ SimpleCov.start do
   add_filter 'test'
 end
 
+require 'bundler/setup'
 require 'kramdown'
 require 'writedown'
 require 'minitest/autorun'
