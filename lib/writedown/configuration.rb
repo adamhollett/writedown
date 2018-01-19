@@ -20,7 +20,8 @@ module Writedown
     attr_accessor(
       :aside_headings,
       :aside_base_class,
-      :aside_heading_level
+      :aside_heading_level,
+      :aside_show_headings
     )
 
     def initialize
@@ -31,6 +32,7 @@ module Writedown
       @aside_headings      = %w(note info success warning danger link)
       @aside_base_class    = 'note'
       @aside_heading_level = 4
+      @aside_show_headings = true
     end
   end
 end
