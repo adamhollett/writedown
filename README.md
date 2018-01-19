@@ -10,7 +10,7 @@
 
 Add this line to your application's Gemfile:
 
-```ruby
+``` ruby
 gem 'writedown'
 ```
 
@@ -30,6 +30,19 @@ gem install writedown
 
 After installing the gem, replace instances of `Kramdown::Document#to_html` in your code with `Kramdown::Document#to_writedown`.
 
+## Configuration
+
+You can configure Writedown's options using a block:
+
+``` ruby
+Writedown.configure do |config|
+  config.aside_base_class    = 'aside'
+  config.aside_heading_level = 5
+end
+```
+
+You can find the available options in the [Configuration class](lib/writedown/configuration.rb).
+
 ## Features
 
 ### Asides
@@ -46,11 +59,20 @@ Markdown
 HTML
 
 ``` html
-<aside class="aside aside--note">
+<aside class="note">
   <h4>Note</h4>
   <p>Don't forget to turn off the power.</p>
 </aside>
 ```
+
+#### Configurable
+
+With asides, you can configure:
+
+- `aside_headings`      — which words cause asides to render instead of blockquotes
+- `aside_base_class`    — the base CSS class added to aside elements
+- `aside_heading_level` — the level of the heading element in the aside
+- `aside_show_headings` — whether to render a heading element in the aside
 
 ### Checkboxes
 
