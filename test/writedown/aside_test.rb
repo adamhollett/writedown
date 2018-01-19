@@ -13,7 +13,7 @@ module Writedown
       DOC
 
       expected = <<~DOC
-        <aside class="aside aside--note">
+        <aside class="note">
           <h4 id="note">Note</h4>
           <p>Beware of dog!</p>
         </aside>
@@ -23,14 +23,15 @@ module Writedown
     end
 
     def test_aside_types
-      Writedown::Aside::ASIDE_HEADINGS.each do |type|
+      Writedown.configuration.aside_headings
+        .reject{ |t| t == Writedown.configuration.aside_base_class }.each do |type|
         source = <<~DOC
           > #{type.capitalize}:
           > Lorem ipsum dolor sit amet.
         DOC
 
         expected = <<~DOC
-          <aside class="aside aside--#{type}">
+          <aside class="note note--#{type}">
             <h4 id="#{type}">#{type.capitalize}</h4>
             <p>Lorem ipsum dolor sit amet.</p>
           </aside>
@@ -47,7 +48,7 @@ module Writedown
       DOC
 
       expected = <<~DOC
-        <aside class="aside aside--note">
+        <aside class="note">
           <h4 id="note">Note</h4>
           <p>The connector should look like this: <img src="connector.jpg" alt="" /></p>
         </aside>
