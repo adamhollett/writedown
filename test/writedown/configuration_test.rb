@@ -4,9 +4,7 @@ require 'test_helper'
 
 module Writedown
   class ConfigurationTest < MiniTest::Test
-    parallelize_me!
-
-    def teardown
+    def setup
       Writedown.reset
     end
 
