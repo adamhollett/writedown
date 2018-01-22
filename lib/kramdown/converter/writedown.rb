@@ -26,7 +26,7 @@ module Kramdown
       def convert_p(el, indent)
         if el.children.size == 1 && el.children.first.type == :img
           convert_figure(el, indent)
-        elsif el.children.first.value =~ CHECKBOX_PATTERN
+        elsif el.children.first.value =~ ::Writedown::Checkbox.pattern
           convert_checkbox(el, indent)
         else
           super

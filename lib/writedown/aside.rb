@@ -15,7 +15,8 @@ module Writedown
       base_class = Writedown.configuration.aside_base_class
       aside_classes = [base_class]
       heading_slug  = Writedown::Utils.slugify(heading_text)
-      aside_classes << "#{base_class}--#{heading_slug}" unless heading_slug == base_class
+      sep = Writedown.configuration.aside_class_separator
+      aside_classes << [base_class, heading_slug].join(sep) unless heading_slug == base_class
 
       # Create the container element
       aside = Kramdown::Element.new(
