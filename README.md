@@ -91,24 +91,24 @@ HTML
 ``` html
 <ul>
   <li>
-    <p>
-      <input type="checkbox" id="checkbox-1" />
-      <label for "checkbox-1">Buy dog food</label>
-    </p>
+    <p><input type="checkbox" id="checkbox-1" /><label for "checkbox-1">Buy dog food</label></p>
   </li>
   <li>
-    <p>
-      <input type="checkbox" id="checkbox-2" />
-      <label for "checkbox-2">Pick up laundry</label>
-    </p>
-  </li><li>
-    <p>
-      <input type="checkbox" id="checkbox-3" checked="checked" />
-      <label for "checkbox-3">Pay bills</label>
-    </p>
+    <p><input type="checkbox" id="checkbox-2" /><label for "checkbox-2">Pick up laundry</label></p>
+  </li>
+  <li>
+    <p><input type="checkbox" id="checkbox-3" checked="checked" /><label for "checkbox-3">Pay bills</label></p>
   </li>
 </ul>
 ```
+
+#### Configurable
+
+With checkboxes, you can configure:
+
+- `checkbox_checks`       — which characters in the source cause the rendered checkbox to be checked
+- `checkbox_base_id`      — the base HTML ID added to aside elements
+- `checkbox_id_separator` — the separator characters between the checkbox's base ID and its number
 
 ### Figures
 
