@@ -2,17 +2,19 @@
 
 module Writedown
   module Aside
-    ASIDE_PATTERN = /(#{Writedown.configuration.aside_headings.join('|')}):?\n/i
+    def self.pattern
+      /(#{Writedown.configuration.aside_headings.join('|')}):?\n/i
+    end
 
     def convert_aside(el, indent)
       text_content = el.children.first.children.first.value
       # Determine the heading string used
-      heading_text = text_content.match(ASIDE_PATTERN)[1]
+      heading_text = text_content.match(Writedown::Aside.pattern)[1]
       # Remove the heading string from the contents
-      text_content.sub!(ASIDE_PATTERN, '')
+      text_content.sub!(Writedown::Aside.pattern, '')
 
       # Create CSS classes
-      base_class = Writedown.configuration.aside_base_class
+      base_class    = Writedown.configuration.aside_base_class
       aside_classes = [base_class]
       heading_slug  = Writedown::Utils.slugify(heading_text)
       sep = Writedown.configuration.aside_class_separator

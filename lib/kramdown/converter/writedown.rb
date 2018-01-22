@@ -16,7 +16,7 @@ module Kramdown
       include ::Writedown::Figure
 
       def convert_blockquote(el, indent)
-        if el.children.first.children.first.value =~ ASIDE_PATTERN
+        if el.children.first.children.first.value =~ ::Writedown::Aside.pattern
           convert_aside(el, indent)
         else
           super

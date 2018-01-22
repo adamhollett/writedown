@@ -59,6 +59,26 @@ module Writedown
       assert_equal expected, render(source)
     end
 
+    def test_configuring_headings
+      Writedown.configure do |config|
+        config.aside_headings << 'heads up'
+      end
+
+      source = <<~DOC
+        > Heads up:
+        > Beware of dog!
+      DOC
+
+      expected = <<~DOC
+        <aside class="note note--heads-up">
+          <h4 id="heads-up">Heads up</h4>
+          <p>Beware of dog!</p>
+        </aside>
+      DOC
+
+      assert_equal expected, render(source)
+    end
+
     def test_configuring_heading_level
       Writedown.configure do |config|
         config.aside_heading_level = 2
