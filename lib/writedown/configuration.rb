@@ -25,7 +25,9 @@ module Writedown
       :aside_show_headings,
       :checkbox_checks,
       :checkbox_base_id,
-      :checkbox_id_separator
+      :checkbox_id_separator,
+      :figure_captions,
+      :figure_preserve_title
     )
 
     def initialize
@@ -42,6 +44,9 @@ module Writedown
       @checkbox_checks       = %w(x X)
       @checkbox_base_id      = 'checkbox'
       @checkbox_id_separator = '-'
+
+      @figure_captions       = true
+      @figure_preserve_title = false
     end
   end
 end
