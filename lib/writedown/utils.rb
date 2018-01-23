@@ -3,14 +3,6 @@
 module Writedown
   class Utils
     class << self
-      def remote?(path)
-        !!path.match(%r{https?|//})
-      end
-
-      def local?(path)
-        !remote?(path)
-      end
-
       def slugify(string, sep = '-')
         slugified_string = string
         slugified_string = slugified_string.gsub(/[^\w\-_]+/, sep)
