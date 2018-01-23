@@ -124,10 +124,18 @@ HTML
 
 ``` html
 <figure>
-  <img src="picture.jpg" alt="A still life with fruits and flowers" title="Still life" />
+  <img src="picture.jpg" alt="A still life with fruits and flowers" />
   <figcaption>Still life</figcaption>
 </figure>
 ```
+
+#### Configurable
+
+With figures, you can configure:
+
+- `figure_captions`         — whether to render a figure caption instead of a title attribute
+- `figure_caption_position` — whether to add the caption below `:below` or above `:above` the image
+- `figure_preserve_title`   — when captions are enabled, whether to still assign the image's `title` attribute to the caption text
 
 ### Image dimensions
 
