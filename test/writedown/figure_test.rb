@@ -15,8 +15,7 @@ module Writedown
 
       expected = <<~DOC
         <figure>
-          <img src="portrait.jpg" alt="" />
-        </figure>
+        <img src="portrait.jpg" alt="" /></figure>
       DOC
 
       assert_equal expected, render(source)
@@ -29,8 +28,7 @@ module Writedown
 
       expected = <<~DOC
         <figure>
-          <img src="portrait.jpg" alt="" />
-          <figcaption>A portrait of the artist</figcaption>
+        <img src="portrait.jpg" alt="" />  <figcaption>A portrait of the artist</figcaption>
         </figure>
       DOC
 
@@ -48,8 +46,25 @@ module Writedown
 
       expected = <<~DOC
         <figure>
-          <img src="portrait.jpg" alt="" title="A portrait of the artist" />
-        </figure>
+        <img src="portrait.jpg" alt="" title="A portrait of the artist" /></figure>
+      DOC
+
+      assert_equal expected, render(source)
+    end
+
+    def test_configuring_caption_position
+      Writedown.configure do |config|
+        config.figure_caption_position = :above
+      end
+
+      source = <<~DOC
+        ![](portrait.jpg "A portrait of the artist")
+      DOC
+
+      expected = <<~DOC
+        <figure>
+          <figcaption>A portrait of the artist</figcaption>
+        <img src="portrait.jpg" alt="" /></figure>
       DOC
 
       assert_equal expected, render(source)
@@ -66,8 +81,7 @@ module Writedown
 
       expected = <<~DOC
         <figure>
-          <img src="portrait.jpg" alt="" title="A portrait of the artist" />
-          <figcaption>A portrait of the artist</figcaption>
+        <img src="portrait.jpg" alt="" title="A portrait of the artist" />  <figcaption>A portrait of the artist</figcaption>
         </figure>
       DOC
 
