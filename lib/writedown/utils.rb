@@ -4,7 +4,11 @@ module Writedown
   class Utils
     class << self
       def remote?(path)
-        !!path.match(%r{(?:https?|//)})
+        !!path.match(%r{https?|//})
+      end
+
+      def local?(path)
+        !remote?(path)
       end
 
       def slugify(string, sep = '-')
