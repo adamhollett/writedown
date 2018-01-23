@@ -22,7 +22,7 @@ module Writedown
 
         # Add the figure caption
         case Writedown.configuration.figure_caption_position
-        when :above
+        when :above, 'above'
           figure.children.unshift(caption_element)
         else
           figure.children << caption_element

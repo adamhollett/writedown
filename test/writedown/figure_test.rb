@@ -52,9 +52,27 @@ module Writedown
       assert_equal expected, render(source)
     end
 
-    def test_configuring_caption_position
+    def test_configuring_caption_position_with_symbol
       Writedown.configure do |config|
         config.figure_caption_position = :above
+      end
+
+      source = <<~DOC
+        ![](portrait.jpg "A portrait of the artist")
+      DOC
+
+      expected = <<~DOC
+        <figure>
+          <figcaption>A portrait of the artist</figcaption>
+        <img src="portrait.jpg" alt="" /></figure>
+      DOC
+
+      assert_equal expected, render(source)
+    end
+
+    def test_configuring_caption_position_with_string
+      Writedown.configure do |config|
+        config.figure_caption_position = 'above'
       end
 
       source = <<~DOC
